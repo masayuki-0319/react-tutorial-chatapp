@@ -48,8 +48,7 @@ type Props = {
   setName: (args?: any) => any;
 };
 
-export const SignIn: VFC<Props> = (props) => {
-  const { setName } = props;
+export const SignIn: VFC<Props> = ({ setName }) => {
   const [disabled, setDisabled] = useState(true);
   const [string, setString] = useState('');
   console.log(string);
@@ -90,6 +89,7 @@ export const SignIn: VFC<Props> = (props) => {
             color='primary'
             className={classes.submit}
             disabled={disabled}
+            onClick={() => setName(string)}
           >
             はじめる
           </Button>
