@@ -4,6 +4,7 @@ import { SignIn } from './Signin';
 
 function App() {
   const [name, setName] = useState('');
+  console.log(name);
 
   return <SignIn setName={setName} />;
 }
