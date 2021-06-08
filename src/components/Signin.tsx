@@ -6,6 +6,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import { VFC } from 'react';
 
 function Copyright() {
   return (
@@ -43,7 +44,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+type Props = {
+  setName: (args?: any) => any;
+};
+
+export const SignIn: VFC<Props> = (props) => {
+  const { setName } = props;
+
   const classes = useStyles();
 
   return (
@@ -80,4 +87,4 @@ export default function SignIn() {
       </Box>
     </Container>
   );
-}
+};

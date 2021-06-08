@@ -1,13 +1,11 @@
-import React from 'react';
+import { useState } from 'react';
 import './App.css';
-import SignIn from './Signin';
+import { SignIn } from './Signin';
 
 function App() {
-  return (
-    <div>
-      <SignIn />
-    </div>
-  );
+  const [name, setName] = useState('');
+
+  return <SignIn setName={setName} />;
 }
 
 export default App;
