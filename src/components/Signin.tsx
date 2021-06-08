@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { VFC } from 'react';
+import { VFC, useState, useEffect } from 'react';
 
 function Copyright() {
   return (
@@ -50,6 +50,15 @@ type Props = {
 
 export const SignIn: VFC<Props> = (props) => {
   const { setName } = props;
+  const [disabled, setDisabled] = useState(true);
+  const [string, setString] = useState('');
+  console.log(string);
+
+  useEffect(() => {
+    const disabled = string === '' ? true : false;
+    setDisabled(disabled);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [string]);
 
   const classes = useStyles();
 
@@ -70,6 +79,9 @@ export const SignIn: VFC<Props> = (props) => {
             label='ニックネーム'
             name='name'
             autoFocus
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+              setString(e.target.value)
+            }
           />
           <Button
             type='submit'
@@ -77,6 +89,7 @@ export const SignIn: VFC<Props> = (props) => {
             variant='contained'
             color='primary'
             className={classes.submit}
+            disabled={disabled}
           >
             はじめる
           </Button>
