@@ -81,6 +81,12 @@ export const SignIn: VFC<Props> = ({ setName }) => {
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
               setString(e.target.value)
             }
+            onKeyDown={(e: any) => {
+              if (e.key === 'Enter') {
+                setName(e.target.value);
+                e.preventDefault();
+              }
+            }}
           />
           <Button
             type='submit'
