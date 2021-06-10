@@ -50,8 +50,9 @@ type Props = {
 
 export const SignIn: VFC<Props> = ({ setName }) => {
   const [disabled, setDisabled] = useState(true);
+  const [isComposed, setIsComposed] = useState(false);
+
   const [string, setString] = useState('');
-  console.log(string);
 
   useEffect(() => {
     const disabled = string === '' ? true : false;
@@ -82,10 +83,18 @@ export const SignIn: VFC<Props> = ({ setName }) => {
               setString(e.target.value)
             }
             onKeyDown={(e: any) => {
+              if (isComposed === true) return;
+
               if (e.key === 'Enter') {
                 setName(e.target.value);
                 e.preventDefault();
               }
+            }}
+            onCompositionStart={() => {
+              setIsComposed(true);
+            }}
+            onCompositionEnd={() => {
+              setIsComposed(false);
             }}
           />
           <Button
