@@ -5,6 +5,7 @@ import { Avatar, Grid } from '@material-ui/core';
 const useStyles = makeStyles({
   root: {
     gridRow: 2,
+    margin: '26px',
   },
 });
 
