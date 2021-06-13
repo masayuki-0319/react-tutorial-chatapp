@@ -1,5 +1,6 @@
 import { TextField } from '@material-ui/core';
 import { VFC, useState } from 'react';
+import { pushMessage } from '../api/firebase';
 
 type Props = {
   name: string;
@@ -9,8 +10,6 @@ type Props = {
 
 export const MessageField: VFC<Props> = ({ name, text, setText }) => {
   const [isComposed, setIsComposed] = useState(false);
-
-  console.log(name);
 
   return (
     <TextField
@@ -25,6 +24,7 @@ export const MessageField: VFC<Props> = ({ name, text, setText }) => {
 
         if (e.key === 'Enter') {
           console.log('push message to firebase!');
+          pushMessage({ name: 'Example Name', text });
 
           setText('');
           e.preventDefault();
