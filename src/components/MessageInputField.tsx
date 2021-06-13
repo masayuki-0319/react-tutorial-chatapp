@@ -1,4 +1,4 @@
-import { VFC, useState } from 'react';
+import { VFC, useState, useRef } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Avatar, Grid } from '@material-ui/core';
 import { gravatarPath } from '../gravatar';
@@ -17,6 +17,7 @@ type Props = {
 };
 
 export const MessageInputField: VFC<Props> = ({ name }) => {
+  const inputEl = useRef(null);
   const [text, setText] = useState('');
 
   const classes = useStyles();
@@ -29,10 +30,20 @@ export const MessageInputField: VFC<Props> = ({ name }) => {
           <Avatar src={avatarPath} />
         </Grid>
         <Grid item xs={10}>
-          <MessageField name={name} text={text} setText={setText} />
+          <MessageField
+            name={name}
+            text={text}
+            setText={setText}
+            inputEl={inputEl}
+          />
         </Grid>
         <Grid item xs={1}>
-          <MessageSubmitButton name={name} text={text} setText={setText} />
+          <MessageSubmitButton
+            name={name}
+            text={text}
+            setText={setText}
+            inputEl={inputEl}
+          />
         </Grid>
       </Grid>
     </div>

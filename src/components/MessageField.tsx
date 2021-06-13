@@ -6,14 +6,17 @@ type Props = {
   name: string;
   text: string;
   setText: (args?: any) => any;
+  inputEl: React.MutableRefObject<null>;
 };
 
-export const MessageField: VFC<Props> = ({ name, text, setText }) => {
+export const MessageField: VFC<Props> = ({ name, text, setText, inputEl }) => {
   const [isComposed, setIsComposed] = useState(false);
 
   return (
     <TextField
       fullWidth
+      autoFocus
+      inputRef={inputEl}
       value={text}
       onChange={(e) => setText(e.target.value)}
       onKeyDown={(e: any) => {
