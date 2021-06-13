@@ -12,7 +12,7 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 const database = firebase.database();
-const messageRef = database.ref('messages');
+export const messageRef = database.ref('messages');
 
 type PushMessage = (props: { name: string; text: string }) => void;
 export const pushMessage: PushMessage = ({ name, text }) => {
